@@ -1,6 +1,7 @@
 package com.shopping.study.Configuration;
 
 import com.shopping.study.Domain.Login.Service.LoginService;
+import com.shopping.study.Domain.Login.Service.LoginSuccessHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -15,6 +16,9 @@ public class LoginConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired
     LoginService loginService;
 
+    @Autowired
+    LoginSuccessHandler loginSuccessHandler;
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
@@ -23,6 +27,8 @@ public class LoginConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
 //                .loginPage("/login")
+                .defaultSuccessUrl("/hello")
+                .successHandler(loginSuccessHandler)
                 .and()
                 .csrf().disable();
     }
