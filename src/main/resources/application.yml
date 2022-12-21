@@ -1,0 +1,29 @@
+server:
+  address: 127.0.0.1
+  port: 8080
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/shopping?createDatabaseIfNotExist=false&useUnicode=true&characterEncoding=UTF-8&characterSetResults=UTF-8&useSSL=false
+    username: study
+    password: 1234
+
+  jpa:
+    database: mysql
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+
+# 대소문자 구별
+# physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+# implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+
+# createDatabaseIfNotExist: 데이터베이스가 존재하지 않으면 자동으로 생성
+# useUnicode: 유니코드 사용 여부 설정
+# characterEncoding: 문자열 인코딩 종류 설정
+# characterSetResult: 결과값의 인코딩 종류 설정
+# useSSL: SSL 사용여부 설정
